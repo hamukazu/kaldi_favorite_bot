@@ -1,0 +1,2 @@
+# kaldi_favorite_bot
+お気に入りのカルディ店舗のセール情報をDiscordに投稿します。
