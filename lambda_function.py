@@ -53,8 +53,12 @@ def lambda_handler(event, context):
     with open("favorites.txt", "r") as f:
         favorites = f.read().splitlines()
 
-    store = datastore.store("Tokyo.json").get()
-    sale = [] if store is None else json.loads(store)
+    store = datastore.store("pref_sale.json").get()
+    #print(json.loads(store)["東京都"])
+    if store is None:
+        sale = []
+    else:
+        sale = json.loads(store).get("東京都", [])
     d = [x for x in sale if x["shop"] in favorites]
     store2 = datastore.store(f"{key}.json")
     st2 = store2.get()
